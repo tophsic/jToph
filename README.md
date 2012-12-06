@@ -1,4 +1,4 @@
-myMenu
+jToph
 ======
 
-My jQuery Menu
+My jQuery Library
