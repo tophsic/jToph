@@ -1,0 +1,110 @@
+@border-radius: 1em;
+@dimension1: 1em;
+
+.menu-border-top-left-radius (@radius) {
+        -webkit-border-top-left-radius: @radius;
+           -moz-border-top-left-radius: @radius;
+                border-top-left-radius: @radius;
+}
+.menu-border-bottom-left-radius (@radius) {
+     -webkit-border-bottom-left-radius: @radius;
+        -moz-border-bottom-left-radius: @radius;
+             border-bottom-left-radius: @radius;
+}
+.menu-border-top-right-radius (@radius) {
+       -webkit-border-top-right-radius: @radius;
+          -moz-border-top-right-radius: @radius;
+               border-top-right-radius: @radius;
+}
+.menu-border-bottom-right-radius (@radius) {
+    -webkit-border-bottom-right-radius: @radius;
+       -moz-border-bottom-right-radius: @radius;
+            border-bottom-right-radius: @radius;
+}
+
+.default-color {
+    background-color:#333;
+    color:#fff;
+}
+.hover-color {
+    background-color:#ddd;
+    color:#333;
+}
+
+.menu, .menu ul {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    list-style-position:outside;
+    position:relative;
+    line-height:@dimension1;
+}
+.menu li {
+    display:block;
+    padding:0 5px;
+    padding:@dimension1 0;
+    .default-color;
+}
+
+ul.menu > li:first-child {
+    .menu-border-top-left-radius     (@border-radius);
+    .menu-border-bottom-left-radius  (@border-radius);
+    width: @dimension1;
+}
+ul.menu > li:last-child {
+    .menu-border-top-right-radius    (@border-radius);
+    .menu-border-bottom-right-radius (@border-radius);
+    width: @dimension1;
+}
+ul.menu li > ul li:last-child {
+    .menu-border-bottom-left-radius  (@border-radius);
+}
+ul.menu li > ul ul li:first-child {
+    .menu-border-top-right-radius    (@border-radius);
+}
+
+.menu {
+    > li:hover {
+        .hover-color;
+        &:first-child, &:last-child {
+            .default-color;
+        }
+    }
+    ul li:hover {
+        .hover-color;
+    }
+}
+.menu li > a, .menu li > span {
+    padding:0 @dimension1;
+}
+.menu a:link, .menu a:active, .menu a:visited{
+    text-decoration:none;
+    color:inherit;
+}
+.menu li {
+    float:left;
+    position:relative;
+}
+.menu ul {
+    position:absolute;
+    top:(@dimension1 * 3);
+    display:none;
+}
+.menu li ul a {
+    float:left;
+}
+.menu ul ul {
+    top:0;
+}
+
+.menu li:hover ul ul,
+.menu li:hover ul ul ul,
+.menu li:hover ul ul ul ul {
+    display:none;
+}
+.menu li:hover ul,
+.menu li li:hover ul,
+.menu li li li:hover ul,
+.menu li li li li:hover ul {
+    display: block;
+}
